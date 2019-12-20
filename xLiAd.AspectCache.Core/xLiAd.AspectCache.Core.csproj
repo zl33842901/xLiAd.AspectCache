@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>张磊</Authors>
+    <Company>张磊 xLiAd</Company>
+    <Description>Aop Cache   切片缓存</Description>
+    <Copyright>Copyright © zhanglei 2019</Copyright>
+    <PackageProjectUrl>https://github.com/zl33842901/xLiAd.AspectCache</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\MyGithub\xLiAd.AspectCache\xLiAd.AspectCache.Core\xLiAd.AspectCache.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Core" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+  </ItemGroup>
+
+</Project>

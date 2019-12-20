@@ -1,0 +1,17 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs
+/xLiAd.AspectCache.Core/bin
+/xLiAd.AspectCache.Core/nupkgs
+/xLiAd.AspectCache.Core/nupkgsSymb
+/xLiAd.AspectCache.Core/obj
+/xLiAd.AspectCache.Core/发布到NUGET.bat
+/xLiAd.AspectCache.Redis/bin
+/xLiAd.AspectCache.Redis/nupkgs
+/xLiAd.AspectCache.Redis/nupkgsSymb
+/xLiAd.AspectCache.Redis/obj
+/xLiAd.AspectCache.Redis/发布到NUGET.bat
+/xLiAd.AspectCache.Redis.Test/bin/Debug/netcoreapp3.1
+/xLiAd.AspectCache.Redis.Test/obj

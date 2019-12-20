@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xLiAd.AspectCache.Core</name>
+    </assembly>
+    <members>
+        <member name="P:xLiAd.AspectCache.Core.AspectCache.CacheKey">
+            <summary>
+            缓存键（不设置的话，会默认生成一个）
+            </summary>
+        </member>
+        <member name="P:xLiAd.AspectCache.Core.AspectCache.CacheLifeTime">
+            <summary>
+            缓存生命周期（不设置的话，会使用默认的缓存生命周期）
+            </summary>
+        </member>
+    </members>
+</doc>

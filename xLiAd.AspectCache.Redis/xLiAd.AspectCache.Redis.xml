@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xLiAd.AspectCache.Redis</name>
+    </assembly>
+    <members>
+        <member name="P:xLiAd.AspectCache.Redis.IRedisCacheOption.EnableCache">
+            <summary>
+            缓存开关
+            </summary>
+        </member>
+        <member name="P:xLiAd.AspectCache.Redis.IRedisCacheOption.RedisUrl">
+            <summary>
+            Redis 地址
+            </summary>
+        </member>
+        <member name="P:xLiAd.AspectCache.Redis.IRedisCacheOption.CachekeyPrefix">
+            <summary>
+            缓存前辍
+            </summary>
+        </member>
+        <member name="T:xLiAd.AspectCache.Redis.RedisCacheHelper">
+            <summary>
+            REDIS缓存类（不支持防止缓存穿透）
+            </summary>
+        </member>
+    </members>
+</doc>

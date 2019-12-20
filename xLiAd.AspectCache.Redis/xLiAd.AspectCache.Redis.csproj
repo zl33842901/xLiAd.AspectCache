@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>张磊</Authors>
+    <Company>张磊 xLiAd</Company>
+    <Description>Aop Redis Cache   切片Redis缓存</Description>
+    <Copyright>Copyright © zhanglei 2019</Copyright>
+    <PackageProjectUrl>https://github.com/zl33842901/xLiAd.AspectCache</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\MyGithub\xLiAd.AspectCache\xLiAd.AspectCache.Redis\xLiAd.AspectCache.Redis.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSRedisCore" Version="3.0.60" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\xLiAd.AspectCache.Core\xLiAd.AspectCache.Core.csproj" />
+  </ItemGroup>
+
+</Project>
