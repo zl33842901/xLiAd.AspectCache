@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xLiAd.AspectCache.Memory</name>
+    </assembly>
+    <members>
+        <member name="P:xLiAd.AspectCache.Memory.MemoryCacheHelper.Enable">
+            <summary>
+            是否开启缓存
+            </summary>
+        </member>
+    </members>
+</doc>

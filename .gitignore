@@ -15,3 +15,9 @@
 /xLiAd.AspectCache.Redis/发布到NUGET.bat
 /xLiAd.AspectCache.Redis.Test/bin/Debug/netcoreapp3.1
 /xLiAd.AspectCache.Redis.Test/obj
+/xLiAd.AspectCache.Memory/bin
+/xLiAd.AspectCache.Memory/nupkgs
+/xLiAd.AspectCache.Memory/nupkgsSymb
+/xLiAd.AspectCache.Memory/obj
+/xLiAd.AspectCache.Memory.Test/bin/Debug/netcoreapp3.1
+/xLiAd.AspectCache.Memory.Test/obj
