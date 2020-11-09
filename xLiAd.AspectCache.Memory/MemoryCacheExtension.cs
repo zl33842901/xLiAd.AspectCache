@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using xLiAd.AspectCache.Core;
 
 namespace xLiAd.AspectCache.Memory
 {
@@ -12,13 +13,14 @@ namespace xLiAd.AspectCache.Memory
             MemoryCacheOption option = new MemoryCacheOption();
             optionSetting(option);
 
-            services.AddScoped<Core.ICacheOption>(x => option);
+            services.AddScoped<ICacheOption>(x => option);
             services.AddScoped<IMemoryCacheOption>(x => option);
-            services.AddScoped<Core.ICacheHelper>(x =>
+            services.AddScoped<ICacheHelper>(x =>
             {
                 var opt = x.GetService<IMemoryCacheOption>();
                 return new MemoryCacheHelper(opt.EnableCache);
             });
+            services.AddScoped<IKeyProvider, DefaultKeyProvider>();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using xLiAd.AspectCache.Core;
 
 namespace xLiAd.AspectCache.Redis
 {
@@ -12,15 +13,16 @@ namespace xLiAd.AspectCache.Redis
             RedisCacheOption option = new RedisCacheOption();
             optionSetting(option);
 
-            services.AddScoped<Core.ICacheOption>(x => option);
+            services.AddScoped<ICacheOption>(x => option);
             services.AddScoped<IRedisCacheOption>(x => option);
-            services.AddScoped<Core.ICacheHelper>(x =>
+            services.AddScoped<ICacheHelper>(x =>
             {
                 var opt = x.GetService<IRedisCacheOption>();
                 var csredis = new CSRedis.CSRedisClient(opt.RedisUrl);
                 RedisHelper.Initialization(csredis);
                 return new RedisCacheHelper(opt.EnableCache, opt.CachekeyPrefix);
             });
+            services.AddScoped<IKeyProvider, DefaultKeyProvider>();
         }
     }
 }

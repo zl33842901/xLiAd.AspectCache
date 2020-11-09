@@ -21,3 +21,5 @@
 /xLiAd.AspectCache.Memory/obj
 /xLiAd.AspectCache.Memory.Test/bin/Debug/netcoreapp3.1
 /xLiAd.AspectCache.Memory.Test/obj
+/xLiAd.AspectCache.Core.Test/bin/Debug/netcoreapp3.1
+/xLiAd.AspectCache.Core.Test/obj

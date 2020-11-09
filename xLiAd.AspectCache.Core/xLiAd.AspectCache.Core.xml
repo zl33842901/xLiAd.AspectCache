@@ -14,5 +14,35 @@
             缓存生命周期（不设置的话，会使用默认的缓存生命周期）
             </summary>
         </member>
+        <member name="T:xLiAd.AspectCache.Core.DefaultKeyProvider">
+            <summary>
+            默认的 缓存Key的提供者
+            </summary>
+        </member>
+        <member name="M:xLiAd.AspectCache.Core.DefaultKeyProvider.ProvideKey(System.String,System.Object[],System.Object,System.Reflection.MethodInfo)">
+            <summary>
+            根据上下文信息生成缓存Key
+            </summary>
+            <param name="cacheKeyTemplete"></param>
+            <param name="parameters"></param>
+            <param name="classImplementation"></param>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="T:xLiAd.AspectCache.Core.IKeyProvider">
+            <summary>
+            缓存Key的提供者
+            </summary>
+        </member>
+        <member name="M:xLiAd.AspectCache.Core.IKeyProvider.ProvideKey(System.String,System.Object[],System.Object,System.Reflection.MethodInfo)">
+            <summary>
+            
+            </summary>
+            <param name="cacheKeyTemplete"></param>
+            <param name="parameters"></param>
+            <param name="classImplementation"></param>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

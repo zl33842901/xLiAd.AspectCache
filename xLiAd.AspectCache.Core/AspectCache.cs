@@ -18,24 +18,9 @@ namespace xLiAd.AspectCache.Core
         {
             ICacheHelper cacheHelper = context.ServiceProvider.GetService(typeof(ICacheHelper)) as ICacheHelper;
             ICacheOption config = context.ServiceProvider.GetService(typeof(ICacheOption)) as ICacheOption;
+            IKeyProvider keyProvider = context.ServiceProvider.GetService(typeof(IKeyProvider)) as IKeyProvider;
 
-            string key;
-            if (string.IsNullOrEmpty(CacheKey))
-            {
-                key = context.Implementation.GetType().FullName + ":" + context.ProxyMethod.Name + ":";
-                string ka = Newtonsoft.Json.JsonConvert.SerializeObject(context.Parameters);
-                key += ka;
-            }
-            else
-            {
-                key = CacheKey.Replace("{class}", context.Implementation.GetType().FullName)
-                    .Replace("{method}", context.ProxyMethod.Name);
-                for (var i = 0; i < context.Parameters.Length; i++)
-                {
-                    if (key.Contains($"{{arg{i}}}"))
-                        key = key.Replace($"{{arg{i}}}", context.Parameters[i].ToString());
-                }
-            }
+            string key = keyProvider.ProvideKey(CacheKey, context.Parameters, context.Implementation, context.ProxyMethod);
 
             object o = cacheHelper.Get(key, context.ImplementationMethod.ReturnType);
             if (o == null)

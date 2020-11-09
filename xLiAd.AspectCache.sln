@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xLiAd.AspectCache.Redis", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xLiAd.AspectCache.Redis.Test", "xLiAd.AspectCache.Redis.Test\xLiAd.AspectCache.Redis.Test.csproj", "{63A0D6DA-8454-43B9-84AD-696CE7CC810F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xLiAd.AspectCache.Memory", "xLiAd.AspectCache.Memory\xLiAd.AspectCache.Memory.csproj", "{3ABEC404-1CD5-4EBD-8EA3-CA9BECD751F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xLiAd.AspectCache.Memory", "xLiAd.AspectCache.Memory\xLiAd.AspectCache.Memory.csproj", "{3ABEC404-1CD5-4EBD-8EA3-CA9BECD751F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xLiAd.AspectCache.Memory.Test", "xLiAd.AspectCache.Memory.Test\xLiAd.AspectCache.Memory.Test.csproj", "{1CF2D09A-B202-4619-9C69-04635342F805}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xLiAd.AspectCache.Memory.Test", "xLiAd.AspectCache.Memory.Test\xLiAd.AspectCache.Memory.Test.csproj", "{1CF2D09A-B202-4619-9C69-04635342F805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xLiAd.AspectCache.Core.Test", "xLiAd.AspectCache.Core.Test\xLiAd.AspectCache.Core.Test.csproj", "{9EC5E0E7-24B7-412E-9A31-CB3191133902}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1CF2D09A-B202-4619-9C69-04635342F805}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CF2D09A-B202-4619-9C69-04635342F805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CF2D09A-B202-4619-9C69-04635342F805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC5E0E7-24B7-412E-9A31-CB3191133902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC5E0E7-24B7-412E-9A31-CB3191133902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC5E0E7-24B7-412E-9A31-CB3191133902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC5E0E7-24B7-412E-9A31-CB3191133902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

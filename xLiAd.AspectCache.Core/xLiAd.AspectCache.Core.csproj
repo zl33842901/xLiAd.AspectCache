@@ -7,7 +7,8 @@
     <Description>Aop Cache   切片缓存</Description>
     <Copyright>Copyright © zhanglei 2019</Copyright>
     <PackageProjectUrl>https://github.com/zl33842901/xLiAd.AspectCache</PackageProjectUrl>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
