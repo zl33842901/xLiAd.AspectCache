@@ -13,7 +13,7 @@ namespace xLiAd.AspectCache.Core
         /// <summary>
         /// 缓存生命周期（不设置的话，会使用默认的缓存生命周期）
         /// </summary>
-        public TimeSpan? CacheLifeTime { get; set; }
+        public int CacheLifeTimeByMinute { get; set; }
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             ICacheHelper cacheHelper = context.ServiceProvider.GetService(typeof(ICacheHelper)) as ICacheHelper;
@@ -26,7 +26,7 @@ namespace xLiAd.AspectCache.Core
             if (o == null)
             {
                 await next(context);
-                cacheHelper.Set(key, context.ReturnValue, CacheLifeTime ?? config.CacheDefaultLifeTime);
+                cacheHelper.Set(key, context.ReturnValue, CacheLifeTimeByMinute <= 0 ? config.CacheDefaultLifeTime : TimeSpan.FromMinutes(CacheLifeTimeByMinute));
             }
             else
             {

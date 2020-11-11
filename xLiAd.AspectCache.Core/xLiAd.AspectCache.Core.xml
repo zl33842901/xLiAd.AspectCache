@@ -9,7 +9,7 @@
             缓存键（不设置的话，会默认生成一个）
             </summary>
         </member>
-        <member name="P:xLiAd.AspectCache.Core.AspectCache.CacheLifeTime">
+        <member name="P:xLiAd.AspectCache.Core.AspectCache.CacheLifeTimeByMinute">
             <summary>
             缓存生命周期（不设置的话，会使用默认的缓存生命周期）
             </summary>
