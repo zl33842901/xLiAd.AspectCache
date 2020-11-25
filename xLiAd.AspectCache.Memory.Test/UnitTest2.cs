@@ -39,5 +39,15 @@ namespace xLiAd.AspectCache.Memory.Test
             var rst3 = service.GetData();
             Assert.NotEqual(rst3.Length, rst1.Length);
         }
+
+        [Fact]
+        public async Task TestTask()
+        {
+            var sp = Before();
+
+            var service = sp.GetService<ISomeService>();
+            var rst1 = await service.GetString();
+            rst1 = await service.GetString();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 
@@ -16,21 +17,46 @@ namespace xLiAd.AspectCache.Core
         public int CacheLifeTimeByMinute { get; set; }
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
+            if (context.ImplementationMethod.ReturnType == typeof(void) || context.ImplementationMethod.ReturnType == typeof(Task))
+            {
+                await next(context);
+                return;
+            }
             ICacheHelper cacheHelper = context.ServiceProvider.GetService(typeof(ICacheHelper)) as ICacheHelper;
             ICacheOption config = context.ServiceProvider.GetService(typeof(ICacheOption)) as ICacheOption;
             IKeyProvider keyProvider = context.ServiceProvider.GetService(typeof(IKeyProvider)) as IKeyProvider;
 
             string key = keyProvider.ProvideKey(CacheKey, context.Parameters, context.Implementation, context.ProxyMethod);
-
-            object o = cacheHelper.Get(key, context.ImplementationMethod.ReturnType);
-            if (o == null)
+            bool isTask = context.ImplementationMethod.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
+            if (isTask)
             {
-                await next(context);
-                cacheHelper.Set(key, context.ReturnValue, CacheLifeTimeByMinute <= 0 ? config.CacheDefaultLifeTime : TimeSpan.FromMinutes(CacheLifeTimeByMinute));
+                var realType = context.ImplementationMethod.ReturnType.GetGenericArguments().First();
+                object o = cacheHelper.Get(key, realType);
+                if (o == null)
+                {
+                    await next(context);
+                    var realResult = context.ImplementationMethod.ReturnType.GetProperty("Result", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).GetValue(context.ReturnValue);
+                    cacheHelper.Set(key, realResult, CacheLifeTimeByMinute <= 0 ? config.CacheDefaultLifeTime : TimeSpan.FromMinutes(CacheLifeTimeByMinute));
+                }
+                else
+                {
+                    var method = typeof(Task).GetMethod("FromResult", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+                    method = method.MakeGenericMethod(realType);
+                    context.ReturnValue = method.Invoke(null, new object[] { o });
+                }
             }
             else
             {
-                context.ReturnValue = o;
+                object o = cacheHelper.Get(key, context.ImplementationMethod.ReturnType);
+                if (o == null)
+                {
+                    await next(context);
+                    cacheHelper.Set(key, context.ReturnValue, CacheLifeTimeByMinute <= 0 ? config.CacheDefaultLifeTime : TimeSpan.FromMinutes(CacheLifeTimeByMinute));
+                }
+                else
+                {
+                    context.ReturnValue = o;
+                }
             }
         }
     }
