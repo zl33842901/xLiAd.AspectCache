@@ -27,7 +27,7 @@ namespace xLiAd.AspectCache.Core
             IKeyProvider keyProvider = context.ServiceProvider.GetService(typeof(IKeyProvider)) as IKeyProvider;
 
             string key = keyProvider.ProvideKey(CacheKey, context.Parameters, context.Implementation, context.ProxyMethod);
-            bool isTask = context.ImplementationMethod.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
+            bool isTask = context.ImplementationMethod.ReturnType.IsGenericType && context.ImplementationMethod.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
             if (isTask)
             {
                 var realType = context.ImplementationMethod.ReturnType.GetGenericArguments().First();

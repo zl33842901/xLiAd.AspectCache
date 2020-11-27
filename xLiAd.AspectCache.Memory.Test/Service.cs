@@ -21,11 +21,17 @@ namespace xLiAd.AspectCache.Memory.Test
         {
             return "5";
         }
+        [AspectCache.Core.AspectCache(CacheKey = "SomeService:GetString2", CacheLifeTimeByMinute = 1)]
+        public string GetString2()
+        {
+            return "5";
+        }
     }
 
     public interface ISomeService
     {
         int[] GetData();
         Task<string> GetString();
+        string GetString2();
     }
 }

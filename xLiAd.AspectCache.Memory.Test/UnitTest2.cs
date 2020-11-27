@@ -47,7 +47,7 @@ namespace xLiAd.AspectCache.Memory.Test
 
             var service = sp.GetService<ISomeService>();
             var rst1 = await service.GetString();
-            rst1 = await service.GetString();
+            rst1 = service.GetString2();
         }
     }
 }
