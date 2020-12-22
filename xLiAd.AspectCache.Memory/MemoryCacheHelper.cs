@@ -53,8 +53,8 @@ namespace xLiAd.AspectCache.Memory
             if (Enable)
                 foreach (var m in GetKeysMethod(mc))
                 {
-
-                    mc.Remove(m);
+                    if (m.Contains(key))
+                        mc.Remove(m);
                 }
         }
 
