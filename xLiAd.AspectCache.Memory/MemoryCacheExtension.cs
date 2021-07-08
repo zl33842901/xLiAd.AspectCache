@@ -22,5 +22,22 @@ namespace xLiAd.AspectCache.Memory
             });
             services.AddScoped<IKeyProvider, DefaultKeyProvider>();
         }
+
+        public static void AddMemoryAspectCache(this IServiceCollection services, Action<IServiceProvider, MemoryCacheOption> optionSetting = null)
+        {
+            services.AddScoped<IMemoryCacheOption>(x => {
+                MemoryCacheOption option = new MemoryCacheOption();
+                optionSetting?.Invoke(x, option);
+                return option;
+            });
+
+            services.AddScoped<ICacheOption>(x => x.GetService<IMemoryCacheOption>());
+            services.AddScoped<ICacheHelper>(x =>
+            {
+                var opt = x.GetService<IMemoryCacheOption>();
+                return new MemoryCacheHelper(opt.EnableCache);
+            });
+            services.AddScoped<IKeyProvider, DefaultKeyProvider>();
+        }
     }
 }

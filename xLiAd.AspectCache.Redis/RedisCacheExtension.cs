@@ -24,5 +24,24 @@ namespace xLiAd.AspectCache.Redis
             });
             services.AddScoped<IKeyProvider, DefaultKeyProvider>();
         }
+        public static void AddRedisAspectCache(this IServiceCollection services, Action<IServiceProvider, RedisCacheOption> optionSetting = null)
+        {
+            services.AddScoped<IRedisCacheOption>(x =>
+            {
+                RedisCacheOption option = new RedisCacheOption();
+                optionSetting?.Invoke(x, option);
+                return option;
+            });
+
+            services.AddScoped<ICacheOption>(x => x.GetService<IRedisCacheOption>());
+            services.AddScoped<ICacheHelper>(x =>
+            {
+                var opt = x.GetService<IRedisCacheOption>();
+                var csredis = new CSRedis.CSRedisClient(opt.RedisUrl);
+                RedisHelper.Initialization(csredis);
+                return new RedisCacheHelper(opt.EnableCache, opt.CachekeyPrefix);
+            });
+            services.AddScoped<IKeyProvider, DefaultKeyProvider>();
+        }
     }
 }
